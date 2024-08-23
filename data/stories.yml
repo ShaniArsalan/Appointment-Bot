@@ -1,0 +1,88 @@
+version: "3.1"
+
+stories:
+  - story: greet and schedule appointment
+    steps:
+      - intent: greet
+      - action: utter_welcome
+      - intent: affirm
+      - action: utter_ask_service
+      - intent: provide_service
+      - action: utter_ask_insurance_type
+      - intent: provide_insurance
+      - action: utter_ask_appointment
+      - intent: provide_appointment_time
+      - action: action_check_availability
+      - action: utter_suggest_appointment
+      - intent: affirm
+      - action: utter_ask_full_name
+      - intent: provide_name
+      - action: action_save_appointment
+      - action: utter_goodbye
+
+  - story: out of office hours
+    steps:
+      - intent: provide_appointment_time
+      - action: action_check_availability
+      - action: utter_out_of_office
+      - intent: deny
+      - action: utter_ask_appointment
+
+  - story: user not interested
+    steps:
+      - intent: greet
+      - action: utter_welcome
+      - intent: deny
+      - action: utter_not_interested
+
+  - story: reschedule appointment
+    steps:
+      - intent: greet
+      - action: utter_welcome
+      - intent: affirm
+      - action: utter_ask_service
+      - intent: provide_service
+      - action: utter_ask_insurance_type
+      - intent: provide_insurance
+      - action: utter_ask_appointment
+      - intent: provide_appointment_time
+      - action: action_check_availability
+      - action: utter_suggest_appointment
+      - intent: affirm
+      - action: utter_ask_full_name
+      - intent: provide_name
+      - action: action_save_appointment
+      - action: utter_goodbye
+
+
+
+# version: "3.1"
+
+# stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye

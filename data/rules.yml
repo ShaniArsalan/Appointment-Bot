@@ -1,0 +1,36 @@
+version: "3.1"
+
+rules:
+  - rule: Handle user not interested
+    steps:
+      - intent: deny
+      - action: utter_not_interested
+
+  - rule: Handle out of office hours
+    steps:
+      - action: action_check_availability
+      - action: utter_out_of_office
+      - intent: deny
+      - action: utter_ask_appointment
+
+  - rule: Handle appointment confirmation
+    steps:
+      - intent: affirm
+      - action: utter_ask_full_name
+
+
+
+
+# version: "3.1"
+
+# rules:
+
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
